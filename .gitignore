@@ -1,0 +1,14 @@
+*.gif
+*.sav
+*.ico
+*.png
+
+#directories
+fonts/
+forbidden/
+restricted/
+xampp/
+img/
+
+applications.html
+bitnami.css

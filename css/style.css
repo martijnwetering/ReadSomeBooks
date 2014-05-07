@@ -1,0 +1,638 @@
+﻿@font-face {
+    font-family: FontAwesome;
+    src: url("../fonts/font_awsome/fontawesome-webfont.eot");
+    src: url("../fonts/font_awsome/fontawesome-webfont.eot?#iefix")
+            format("embedded-opentype"),
+            url("../fonts/font_awsome/fontawesome-webfont.woff"),
+            url("../fonts/font_awsome/fontawesome-webfont.ttf")
+                format("truetype"),
+            url("../fonts/font_awsome/fontawesome-webfont.svg")
+                format("svg");
+}
+
+body, div, p, a, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 1.5% 0;
+}
+
+h2 {
+    font-size: 1.7em;
+    margin: 1.3% 0;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin: 1.1% 0;
+}
+
+h4 {
+    font-size: 1.3em;
+    margin: 1% 0;
+}
+
+p {
+    font-size: 1em;
+    text-align: justify;
+    margin: 1% 0;
+}
+
+a {
+    color: #000000;
+}
+
+.clearfix{
+    clear: both;
+}
+
+#container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#header {
+    min-width: 700px;
+}
+
+#kolom-1 {
+    width: calc(100% - 300px);
+    float: left;
+    min-width: 650px;
+}
+
+#kolom-2 {
+    float: left;
+    width: 260px;
+    padding: 1em;
+}
+
+#kolom-2 img {
+    display: block;
+    margin: 0 auto 5% auto;
+}
+
+#logo {
+    height: 150px;
+    float: left;
+    width: calc(100% - 400px);
+}
+
+#logo img {
+    width: 100%;
+    max-width: 546px;
+}
+
+/* Buttons and input
+=============================================================================*/
+
+button {
+    color: white;
+    background-color: dodgerblue;
+    border: none;
+    padding: 0.2em 0.5em;
+    display: block;
+}
+
+button a {
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+button:hover {
+    background-color: #000000 !important;
+}
+
+input[type=submit] {
+    color: #ffffff;
+    background-color: dodgerblue;
+    border: none;
+    padding: 0.2em 0.5em;
+}
+
+input[type=submit]:hover {
+    background-color: #000000;
+}
+
+/* end buttons and input */
+
+/* Navigatie
+=============================================================================*/
+
+#menu {
+    clear: both;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1% 0;
+}
+
+ul.nav {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+}
+
+ul.nav li {
+    float: left;
+    margin: 0;
+    text-align: center;
+    width: 150px;
+}
+
+ul.nav li a{
+    background-color: #000000;
+    color: white;
+	display: block;
+	text-decoration: none;
+	padding: 3px;
+    font-weight: bold;
+    border: 1px solid #ffffff;
+}
+
+ul.nav li a.focus {
+    background-color: dodgerblue;
+}
+
+ul.nav li a:hover {
+    background-color: dodgerblue;
+    color: white;
+}
+
+ul.nav li ul {
+    list-style: none;
+    display: none;
+    position: absolute;
+    width: 150px;
+    z-index: 10;
+}
+
+ul.nav li:hover ul {
+    display: block;
+}
+
+li > ul {
+    padding: 0;
+}
+
+/* end navigation */
+
+/* Login
+=============================================================================*/
+
+#login {
+    height: 150px;
+    width: 400px;
+    float: right;
+}
+
+#form-login {
+    font-size: 11px;
+    position: relative;
+    padding: 4%;
+    overflow: hidden;
+}
+
+#form-login div.input-groep {
+    float: right;
+    margin-left: 1%;
+}
+
+#form-login > div:not(.clearfix) {
+    float: right;
+}
+
+#form-login input:not([type=submit]) {
+    font-size: 12px;
+    font-weight: lighter;
+    padding: 0.2em;
+    margin: 1% 0;
+}
+
+#form-login a {
+    text-align: right;
+    margin-left: 0.5em;
+    float: right;
+}
+
+#form-login input[type=checkbox], #form-login span {
+    vertical-align: middle;
+}
+
+#form-login input[for=gebruikersnaam] {
+    display: block;
+}
+
+#form-login input[type=submit] {
+    float: right;
+    width: 20%;
+    margin: 1% 0;
+}
+
+#form-login label {
+    display: block;
+}
+
+#form-login a:hover {
+    color: dodgerblue;
+}
+
+/* end login */
+
+/* Over ons
+=============================================================================*/
+
+.koptekst {
+    text-align: center;
+    margin: 1em;
+}
+
+.info {
+    margin: 3% 0;
+}
+
+.over-ons img {
+    float: right;
+    margin-left: 2%;
+    width: 35%;
+}
+
+.over-ons h2 {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.info h2 {
+    clear: both;
+}
+
+#map-canvas {
+    width: 400px;
+    height: 300px;
+    float: right;
+    margin-left: 2%;
+}
+
+/* end over ons */
+
+/* Product-detail
+=============================================================================*/
+
+#content button.btn-terug {
+    margin: 1% 0;
+}
+
+#detail-product p {
+    margin: 1% 0;
+}
+
+.sub-kolom-1{
+    width: 38%;
+    float: left;
+}
+
+.sub-kolom-1 img {
+    float: left;
+    width: 100%;
+    max-width: 333px;
+    margin: 0;
+}
+
+.sub-kolom-2 {
+    width: 59%;
+    float: left;
+    margin-left: 2%;
+}
+
+.sub-kolom-2 p {
+    float: left;
+    width: 58%;
+}
+
+.sub-kolom-2 h2 {
+    margin: 0;
+}
+
+.sub-kolom-2 h3 {
+    font-weight: normal;
+    margin: 0;
+}
+
+.op-voorraad {
+    float: left;
+    width: 38%;
+    clear: right;
+    margin: 1% 0 0 3%;
+    display: block;
+}
+
+.op-voorraad span {
+    color: #1B9B42;
+}
+
+.prijs {
+    float: left;
+    display: block;
+    margin-top: 3.5%;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.bestelling {
+    float: right;
+    display: block;
+}
+
+button.bestelling {
+    margin: 4% 0 0 1%;
+}
+
+input.bestelling {
+    margin-top: 4%;
+    margin-left: 1%;
+}
+
+label.bestelling {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-top: 4%;
+}
+
+.product-panel {
+    margin-top: 5%;
+}
+
+.gerelateerd-product {
+    width: 29.33%;
+    padding: 1%;
+    margin-right: 2%;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.gerelateerd-product:first-child {
+    float: left;
+}
+
+.gerelateerd-product:nth-child(3) {
+    margin: 0 auto;
+}
+
+.gerelateerd-product img {
+    float: none;
+    width: 60%;
+    display: block;
+    margin: 0 auto 2% auto;
+}
+
+.gerelateerd-product button {
+    float: right;
+    margin-top: 5%;
+}
+
+.naam {
+    font-size: 1.1em;
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    height: 50px;
+    margin-top: 5%;
+}
+
+.prijs-klein {
+    float: left;
+    font-size: 1em;
+    display: block;
+    margin-top: 5%;
+}
+
+.detail-product-footer {
+    clear: both;
+}
+
+/* end product-detail*/
+
+/* Productenoverzicht
+=============================================================================*/
+
+.po-kolom form {
+    display: block;
+    margin: 3% auto;
+    width: 273px;
+}
+
+.po-kolom form input[type=search] {
+    padding-left: 2%;
+}
+
+.po-kolom > select {
+    margin-left: 2%;
+}
+
+.po-kolom > span {
+    display: inline-block;
+    margin-left: 3%;
+}
+
+.product-klein {
+    vertical-align: bottom;
+    width: 19%;
+    margin: 3% 0 3% 2%;
+    display: inline-block;
+}
+
+.product-klein a {
+    text-decoration: none;
+}
+
+.product-klein:nth-child(1) {
+    margin-left: 14%;
+}
+
+.product-klein:nth-child(4) {
+   margin-right: 2%;
+}
+
+.product-klein img {
+    width: 100%;
+}
+
+.product-klein span {
+    display: block;
+}
+
+.product-info {
+    height: 90px;
+}
+
+.po-naam {
+    clear: both;
+    font-weight: bold;
+}
+
+.po-autheur {
+    margin: 0 0 0 0;
+}
+
+.po-prijs {
+    float: left;
+    font-size: 1em;
+}
+
+.product-klein button {
+    width: 30%;
+    float: right;
+    font-size: 0.8em;
+}
+
+/* End Productenoverzicht */
+
+/* Winkelwagen
+=============================================================================*/
+
+.winkelwagen {
+    position: relative;
+}
+
+.winkelwagen-kolom {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.winkelwagen h1 {
+    text-align: center;
+    margin-top: 1%;
+}
+
+.winkelwagen table {
+    border: 1px solid black;
+    margin: 2% auto;
+}
+
+.winkelwagen table th,
+.winkelwagen table td {
+    padding: 2%;
+    white-space: nowrap;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.tabel-1 {
+    width: 100%;
+}
+
+.tabel-1 img {
+    width: 40%;
+}
+
+.winkelwagen table.tabel-2 {
+    float: right;
+    margin: 0 0 2% 0;
+}
+
+.winkelwagen table.tabel-2 td {
+    width: 100px;
+}
+
+.verwijder {
+    display: block;
+    width: 16px;
+    margin: 0 auto;
+}
+
+button.verder-winkelen {
+    position: absolute;
+}
+
+button.herbereken {
+    float: right;
+    margin-right: 2%;
+}
+
+button.afrekenen {
+    float: right;
+    clear: both;
+    background-color: forestgreen;
+}
+
+/* End Winkelwagen */
+
+/* Registreren
+=============================================================================*/
+
+.clear-left {
+    clear: left;
+}
+
+.registreren h1 {
+    text-align: center;
+}
+
+.registreren h4 {
+    margin-left: 1%;
+}
+
+form.registreer-form {
+    margin-top: 1%;
+}
+
+form.registreer-form div.input-groep {
+    float: left;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+
+form.registreer-form label {
+    display: block;
+    font-size: 0.8em;
+}
+
+form.registreer-form input {
+    display: block;
+}
+
+
+form.registreer-form legend {
+    font-weight: bold;
+}
+
+form.registreer-form fieldset:first-child {
+    width: 20%;
+    float: left;
+}
+
+form.registreer-form fieldset:nth-child(2) {
+    width: 72%;
+    float: left;
+    margin-bottom: 1%;
+}
+
+form.registreer-form input[type=submit] {
+    display: block;
+    float: right;
+    clear: both;
+    margin-right: 1.5%;
+}
+
+@media screen and (max-width: 1548px) {
+    form.registreer-form input[type=submit] {
+        float: left;
+    }
+}
+
+/* End Registreren */
+
+/* Footer
+=============================================================================*/
+
+footer {
+    clear: both;
+    text-align: center;
+    margin: 5% 0;
+}
+

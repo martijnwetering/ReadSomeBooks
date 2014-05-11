@@ -9,7 +9,7 @@ forbidden/
 restricted/
 xampp/
 img/
-node_moduels/
+node_modules/
 
 applications.html
 bitnami.css

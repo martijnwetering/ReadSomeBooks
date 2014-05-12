@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <title>Boekenshop</title>
     <meta name="description" content="Op ReadSomeBooks kunnen de nieuwste boeken besteld worden."/>
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/font-awesome.css"/>
     <link href="../css/normalize.css" rel="stylesheet"/>
     <link href="../css/style.css" rel="stylesheet"/>
     <script src="//localhost:35729/livereload.js"></script>

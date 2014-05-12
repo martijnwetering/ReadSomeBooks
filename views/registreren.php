@@ -1,10 +1,58 @@
+<?php
+require '../classes/User.php';
+require '../connect/Database.php';
+
+    $registratie_verstuurd = (isset($_POST['registratie_verstuurd']));
+
+    $errors = array();
+
+    if ($registratie_verstuurd)
+    {
+        if (empty($_POST['gebruikersnaam']) || empty($_POST['wachtwoord']) || empty($_POST['wachtwoord_herhaal']) || empty($_POST['aanhef'])
+            || empty($_POST['voornaam']) || empty($_POST['achternaam']) || empty($_POST['email']) || empty($_POST['straatnaam'])
+            || empty($_POST['huisnummer']) || empty($_POST['huisnummer']) || empty($_POST['postcode']) || empty($_POST['woonplaats'] ) || empty($_POST['$telefoon']))
+        {
+            $errors[] = 'Alle velden zijn verplicht';
+        }
+        else {
+            if ($wachtwoord !== $wachtwoord_herhaal)
+            {
+                $errors = 'Wachtwoorden zijn niet gelijk';
+            }
+        }
+
+        if (empty($errors) === true)
+        {
+            $user = new User($_POST);
+            $user->registreer($db);
+
+            header('Location: registreren.php?succes');
+            exit();
+        }
+    }
+
+//        $db = new mysqli('localhost', 'root', '', 'readsomebooks');
+//        if(mysqli_connect_errno())
+//        {
+//            trigger_error('Fout bij verbinding: '.$db->error);
+//        }
+//
+//        $sql = "insert into users (gebruikersnaam, wachtwoord, aanhef, voornaam,
+//        achternaam, email, straatnaam, huisnummer, postcode, woonplaats, telefoon, tussenvoegsel)
+//            values ('$gebruikersnaam', '$wachtwoord', '$aanhef', '$voornaam', '$achternaam', '$email',
+//                '$straatnaam', '$huisnummer', '$postcode', '$woonplaats', '$telefoon', '$tussenvoegsel')";
+//
+//        $db->query($sql);
+//        $db->close();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
     <title>Boekenshop</title>
     <meta name="description" content="Op ReadSomeBooks kunnen de nieuwste boeken besteld worden."/>
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/font-awesome.css"/>
     <link href="../css/normalize.css" rel="stylesheet"/>
     <link href="../css/style.css" rel="stylesheet"/>
     <script src="//localhost:35729/livereload.js"></script>
@@ -18,24 +66,28 @@
             ?>
             <div class="clearfix"></div>
         </div>
+        <?php
+            if (!isset($_GET['succes']))
+            {
+        ?>
         <div id="content" class="registreren">
             <h1>Registreren</h1>
             <h4>Vul uw gegevens in</h4>
 
-            <form class="registreer-form">
+            <form class="registreer-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                 <fieldset>
                     <legend>Accountgegevens</legend>
                     <div class="input-groep clear-left">
-                        <label for="gebruikersnaam-account">Gebruikersnaam*</label>
-                        <input type="text" name="gebruikersnaam-account" id="gebruikersnaam-account"/>
+                        <label for="gebruikersnaam">Gebruikersnaam*</label>
+                        <input type="text" name="gebruikersnaam" id="gebruikersnaam"/>
                     </div>
                     <div class="input-groep clear-left">
-                        <label for="wachtwoord-account">Wachtwoord*</label>
-                        <input type="password" name="wachtwoord-account" id="wachtwoord-account"/>
+                        <label for="wachtwoord">Wachtwoord*</label>
+                        <input type="password" name="wachtwoord" id="wachtwoord"/>
                     </div>
                     <div class="input-groep clear-left">
-                        <label for="herhaal-wachtwoord-account">Herhaal wachtwoord*</label>
-                        <input type="text" name="herhaal-wachtwoord-account" id="herhaal-wachtwoord-account"/>
+                        <label for="herhaal_wachtwoord-account">Herhaal wachtwoord*</label>
+                        <input type="password" name="herhaal_wachtwoord" id="herhaal_wachtwoord"/>
                     </div>
                 </fieldset>
                 <fieldset>
@@ -77,18 +129,26 @@
                         <input type="text" name="postcode" id="postcode"/>
                     </div>
                     <div class="input-groep">
-                        <label for="plaatsnaam">Plaatsnaam*</label>
-                        <input type="text" name="plaatsnaam" id="plaatsnaam"/>
+                        <label for="woonplaats">Plaatsnaam*</label>
+                        <input type="text" name="woonplaats" id="woonplaats"/>
                     </div>
                     <div class="input-groep clear-left">
                         <label for="telefoon">Telefoon*</label>
                         <input type="number" name="telefoon" id="telefoon"/>
                     </div>
                 </fieldset>
-                <input type="submit" value="Opslaan">
+                <input type="hidden" name="registratie_verstuurd" value="ja">
+                <input type="submit" value="Verstuur">
                 <div class="clearfix"></div>
             </form>
         </div>
+        <?php
+            }
+            if (isset($_GET['succes']))
+            {
+                echo 'Registratie voltooid';
+            }
+        ?>
         <footer>
             <span>&copy; Read Some Books | 2014</span>
         </footer>

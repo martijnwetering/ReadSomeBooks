@@ -1,16 +1,4 @@
-﻿﻿@font-face {
-    font-family: FontAwesome;
-    src: url("../fonts/font_awsome/fontawesome-webfont.eot");
-    src: url("../fonts/font_awsome/fontawesome-webfont.eot?#iefix")
-            format("embedded-opentype"),
-            url("../fonts/font_awsome/fontawesome-webfont.woff"),
-            url("../fonts/font_awsome/fontawesome-webfont.ttf")
-                format("truetype"),
-            url("../fonts/font_awsome/fontawesome-webfont.svg")
-                format("svg");
-}
-
-body, div, p, a, h1, h2, h3, h4, h5, h6 {
+﻿body, div, p, a, h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
@@ -256,7 +244,7 @@ li > ul {
     margin: 3% 0;
 }
 
-.over-ons img {
+.over-ons .over-ons img {
     float: right;
     margin-left: 2%;
     width: 35%;

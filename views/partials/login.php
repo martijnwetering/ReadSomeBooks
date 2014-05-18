@@ -34,7 +34,7 @@
 
             <div>
                 <a href="#">Vergeten?</a>
-                <a href="registreren.php" class="float-left">Registreer</a>
+                <a href="<?php echo $_SERVER['PHP_SELF'] . '?page=registreren' ?>" class="float-left">Registreer</a>
             </div>
         </div>
         <div class="input-groep">

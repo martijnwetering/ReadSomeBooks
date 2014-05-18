@@ -119,7 +119,7 @@ input[type=submit]:hover {
     padding: 1% 0;
 }
 
-.over-ons .over-ons a, .webshop .webshop > a {
+ul.nav li a.focus {
     background-color: dodgerblue;
 }
 
@@ -273,6 +273,10 @@ li > ul {
 
 #content button.btn-terug {
     margin: 1% 0;
+}
+
+#detail-product h2 {
+    border: none;
 }
 
 #detail-product p {

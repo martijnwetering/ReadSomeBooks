@@ -611,6 +611,13 @@ form.registreer-form input[type=submit] {
     margin-right: 1.5%;
 }
 
+.form-errors {
+    background-color: indianred;
+    color: white;
+    padding: 1%;
+    margin: 1% 0;
+}
+
 @media screen and (max-width: 1548px) {
     form.registreer-form input[type=submit] {
         float: left;

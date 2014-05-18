@@ -14,9 +14,31 @@ if ($registratie_verstuurd)
         $errors[] = 'Alle velden met een * zijn verplicht';
     }
     else {
+        // Removes all leading and trailing whitespace
+        foreach ($_POST as $key => $value)
+        {
+            $value = trim($value);
+        }
         if ($_POST['wachtwoord'] !== $_POST['herhaal_wachtwoord'])
         {
             $errors[] = 'Wachtwoorden zijn niet gelijk';
+        }
+        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
+        {
+            $errors[] = 'Geen geldig e-mail adres is opgegeven ';
+        }
+        if (!is_numeric($_POST['huisnummer']))
+        {
+            $errors[] = 'Geen geldig huisnummer opgegeven';
+        }
+        if (!is_numeric($_POST['telefoon']))
+        {
+            $errors[] = 'Geen geldig telefoonnummer opgegeven';
+        }
+        if (!checkPasswordStrength($_POST['wachtwoord']))
+        {
+            $errors[] = 'Wachtwoord moet minstens 6 en maximaal 20 karakters bevatten waarvan'
+                . ' 1 number, 1 letter en 1 hoofdletter';
         }
     }
 
@@ -38,16 +60,15 @@ if ($registratie_verstuurd)
         }
         catch(PDOException $e)
         {
-            $pdoexception = $e;
             echo $e->getMessage();
         }
 
-        header('Location: registreren.php?succes');
+        header('Location: shell.php?succes&page=registreren');
         exit();
     }
 }
 
-// Checks if the registration form was filled in
+// Checks if all required field in the registration form were filled in
 function filledInForm($post)
 {
     foreach($post as $key => $value)
@@ -69,6 +90,20 @@ function isNullOrWhiteSpace($value)
     return (!isset($value) || trim($value) === '');
 }
 
+// Checks if the strength of the password is sufficient
+function checkPasswordStrength($password)
+{
+    if( strlen($password) < 6 || strlen($password) > 20 || !preg_match("#[0-9]+#", $password)
+        || !preg_match("#[a-z]+#", $password) || !preg_match("#[A-Z]+#", $password))
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
 
 if (!isset($_GET['succes']))
 {
@@ -77,7 +112,7 @@ if (!isset($_GET['succes']))
         <h1>Registreren</h1>
         <h4>Vul uw gegevens in</h4>
 
-        <form class="registreer-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <form class="registreer-form" action="<?php echo $_SERVER['PHP_SELF'] . '?page=registreren'; ?>" method="POST">
             <fieldset>
                 <legend>Accountgegevens</legend>
                 <div class="input-groep clear-left">
@@ -144,6 +179,18 @@ if (!isset($_GET['succes']))
             <input type="submit" value="Verstuur">
             <div class="clearfix"></div>
         </form>
+        <?php
+        if (!empty($errors))
+        {
+            echo '<div class="form-errors">';
+            foreach ($errors as $error)
+            {
+                echo $error;
+                echo '<br />';
+            }
+            echo '</div>';
+        }
+        ?>
     </div>
 <?php
 }

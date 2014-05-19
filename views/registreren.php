@@ -2,34 +2,34 @@
 require '../classes/User.php';
 require '../connect/Database.php';
 
-    $registratie_verstuurd = (isset($_POST['registratie_verstuurd']));
+$registratie_verstuurd = (isset($_POST['registratie_verstuurd']));
 
-    $errors = array();
+$errors = array();
 
-    if ($registratie_verstuurd)
+if ($registratie_verstuurd)
+{
+    if (empty($_POST['gebruikersnaam']) || empty($_POST['wachtwoord']) || empty($_POST['wachtwoord_herhaal']) || empty($_POST['aanhef'])
+        || empty($_POST['voornaam']) || empty($_POST['achternaam']) || empty($_POST['email']) || empty($_POST['straatnaam'])
+        || empty($_POST['huisnummer']) || empty($_POST['huisnummer']) || empty($_POST['postcode']) || empty($_POST['woonplaats'] ) || empty($_POST['$telefoon']))
     {
-        if (empty($_POST['gebruikersnaam']) || empty($_POST['wachtwoord']) || empty($_POST['wachtwoord_herhaal']) || empty($_POST['aanhef'])
-            || empty($_POST['voornaam']) || empty($_POST['achternaam']) || empty($_POST['email']) || empty($_POST['straatnaam'])
-            || empty($_POST['huisnummer']) || empty($_POST['huisnummer']) || empty($_POST['postcode']) || empty($_POST['woonplaats'] ) || empty($_POST['$telefoon']))
+        $errors[] = 'Alle velden zijn verplicht';
+    }
+    else {
+        if ($wachtwoord !== $wachtwoord_herhaal)
         {
-            $errors[] = 'Alle velden zijn verplicht';
-        }
-        else {
-            if ($wachtwoord !== $wachtwoord_herhaal)
-            {
-                $errors = 'Wachtwoorden zijn niet gelijk';
-            }
-        }
-
-        if (empty($errors) === true)
-        {
-            $user = new User($_POST);
-            $user->registreer($db);
-
-            header('Location: registreren.php?succes');
-            exit();
+            $errors = 'Wachtwoorden zijn niet gelijk';
         }
     }
+
+    if (empty($errors) === true)
+    {
+        $user = new User($_POST);
+        $user->registreer($db);
+
+        header('Location: registreren.php?succes');
+        exit();
+    }
+}
 
 //        $db = new mysqli('localhost', 'root', '', 'readsomebooks');
 //        if(mysqli_connect_errno())

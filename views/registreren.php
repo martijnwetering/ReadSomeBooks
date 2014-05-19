@@ -40,6 +40,14 @@ if ($registratie_verstuurd)
             $errors[] = 'Wachtwoord moet minstens 6 en maximaal 20 karakters bevatten waarvan'
                 . ' 1 number, 1 letter en 1 hoofdletter';
         }
+        if (duplicateUsername($_POST['gebruikersnaam'], $checkUsername))
+        {
+            $errors[] = 'Gebruikersnaam bestaat al';
+        }
+        if (duplicateEmail($_POST['email'], $checkEmail))
+        {
+            $errors[] = 'E-mail al in gebruik';
+        }
     }
 
     if (empty($errors) === true)
@@ -68,6 +76,34 @@ if ($registratie_verstuurd)
 
         header('Location: shell.php?succes&page=registreren');
         exit();
+    }
+}
+
+function duplicateUsername($username, $checkUsername)
+{
+    $checkUsername->execute(array($username));
+    $count = $checkUsername->rowCount();
+    if ($count > 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function duplicateEmail($email, $checkEmail)
+{
+    $checkEmail->execute(array($email));
+    $count = $checkEmail->rowCount();
+    if ($count > 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
     }
 }
 

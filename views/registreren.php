@@ -44,6 +44,9 @@ if ($registratie_verstuurd)
 
     if (empty($errors) === true)
     {
+        // Hashes the password before saving it to the database
+        $_POST['wachtwoord'] = password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT);
+
         // Add all info about the user to an array that will be send to the database
         foreach ($_POST as $key => $value)
         {

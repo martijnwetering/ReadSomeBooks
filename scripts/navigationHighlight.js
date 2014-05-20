@@ -1,6 +1,6 @@
-$(document).ready(
-    setFocus()
-);
+$(document).ready(function() {
+    setFocus();
+});
 
 function getQueryStringValue(key) {
     return decodeURI(window.location.search.replace(new RegExp("^(?:.*[&\\?]" +

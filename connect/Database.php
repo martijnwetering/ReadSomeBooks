@@ -6,8 +6,14 @@ $config = array(
     'wachtwoord' => '',
 );
 
-$db = new PDO($config['dsn'], $config['gebruikersnaam'], $config['wachtwoord']);
-
+try
+{
+    $db = new PDO($config['dsn'], $config['gebruikersnaam'], $config['wachtwoord']);
+}
+catch(PDOException $e)
+{
+    echo $e->getMessage();
+}
 // Prepared statemants
 $registerUser = $db->prepare("insert into users (voornaam, achternaam, wachtwoord, straatnaam, huisnummer, postcode,
     woonplaats, telefoon, aanhef, tussenvoegsel, gebruikersnaam, email, created) values (:voornaam, :achternaam, :wachtwoord, :straatnaam,

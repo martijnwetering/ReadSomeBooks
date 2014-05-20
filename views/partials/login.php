@@ -7,7 +7,7 @@ session_start();
 if (isset($_GET['logout']))
 {
     session_destroy();
-    header('Location: ' . $_SERVER['PHP_SELF'] . '?' . $_GET['page'] );
+    header('Location: ' . $_SERVER['PHP_SELF'] . '?page=' . $_GET['page'] );
     exit();
 }
 

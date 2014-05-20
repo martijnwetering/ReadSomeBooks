@@ -1,33 +1,47 @@
-<div id="login">
-
 <?php
-//        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//            echo '<p>';
-//            foreach ($_POST as $key => $value) {
-//                echo $value;
-//            }
-//            echo '</p>';
-//
-////            $link = mysql_connect('localhost', 'root', '') or die('Verbinding mislukt');
-////            $db = mysql_select_db('readsomebooks', $link) or die('Database niet beschikbaar');
-////            $sql = 'select email from users where ID = 1';
-////            $result = mysql_query($sql) or die('Fout bij uitvoeren query');
-////            $email = mysql_fetch_row($result);
-//
-////            $db = new mysqli('localhost', 'root', '', 'readsomebooks');
-////            $sql = 'select email from users where ID = 1';
-////            $result = $db->query($sql);
-////            $row = $result->fetch_assoc();
-//
-//            echo '<p>';
-////            echo $row['email'];
-//            echo '</p>';
-//        }
-//        else {
+require('../scripts/helperFunctions.php');
+require('../connect/Database.php');
+
+session_start();
+
+if (isset($_GET['logout']))
+{
+    session_destroy();
+    header('Location: ' . $_SERVER['PHP_SELF'] . '?' . $_GET['page'] );
+    exit();
+}
+
+$loginVerstuurd = (isset($_POST['login_verstuurd']));
+
+if ($loginVerstuurd)
+{
+    $password = trim($_POST['wachtwoord']);
+    $userName = trim($_POST['gebruikersnaam']);
+    $hashedPassword->execute(array($userName));
+    $hash = $hashedPassword->fetch();
+
+    $verified = password_verify($password, $hash['wachtwoord']);
+
+    if (password_verify($password, $hash['wachtwoord']))
+    {
+        $_SESSION['userName'] = $userName;
+
+        header('Location: ' . $_SERVER['REQUEST_URI']);
+        exit();
+    }
+    else
+    {
+        $loginError = 'Gebruikersnaam en/of wachtwoord is niet juist';
+    }
+}
 ?>
 
-
-    <form id="form-login" action="over-ons.php" method="post">
+<div id="login">
+    <?php
+    if (!isset($_SESSION['userName']))
+    {
+    ?>
+    <form id="form-login" action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post">
         <div class="input-groep">
             <label for="wachtwoord"><i class="fa fa-lock"></i> WACHTWOORD</label>
             <input type="password" placeholder="wachtwoord" id="wachtwoord" name="wachtwoord"/>
@@ -45,12 +59,28 @@
                 <input id="rememberme" name="rememberme" value="remember" type="checkbox"/><span>&nbsp;Onthouden</span>
             </div>
         </div>
+        <input type="hidden" name="login_verstuurd" value="ja">
         <div class="clearfix" id="form-bottom">
             <input type="submit" value="Login">
         </div>
     </form>
+    <?php
+    }
 
+    if (isset($loginError))
+    {
+        echo "<span class='login-error'>";
+        echo $loginError;
+        echo '</span>';
+    }
 
-
+    if (isset($_SESSION['userName']))
+    {
+        echo "<div class='user-welcome'>";
+        echo 'Welkom ' . '<span>' . $_SESSION['userName'] . '</span>';
+        echo "<a href='" . $_SERVER['REQUEST_URI'] . "&logout=true'>" . " | logout" . "</a>";
+        echo '</div>';
+    }
+    ?>
 
 </div>

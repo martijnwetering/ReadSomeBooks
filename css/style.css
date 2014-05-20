@@ -230,6 +230,35 @@ li > ul {
     color: dodgerblue;
 }
 
+span.login-error {
+    display: block;
+    color: indianred;
+    font-size: 0.7em;
+    float: right;
+    padding-right: 4%;
+}
+
+div.user-welcome {
+    text-align: right;
+    font-size: 0.8em;
+    margin-top: 1%;
+}
+
+div.user-welcome span {
+    font-weight: bold;
+}
+
+div.user-welcome a {
+    float: right;
+    display: block;
+    margin-left: 2%;
+    text-decoration: none;
+}
+
+div.user-welcome a:hover {
+    color: dodgerblue;
+}
+
 /* end login */
 
 /* Over ons

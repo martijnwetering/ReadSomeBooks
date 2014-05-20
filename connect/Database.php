@@ -17,5 +17,11 @@ $registerUser = $db->prepare("insert into users (voornaam, achternaam, wachtwoor
 $checkUsername = $db->prepare("select * from users where gebruikersnaam = ?");
 $checkEmail = $db->prepare("select * from users where email = ?");
 
+// Login
+$hashedPassword = $db->prepare("select wachtwoord from users where gebruikersnaam = ?");
+
+// Retrieve name user
+//$userFirstAndLastName = $db->prepare("select voornaam, tussenvoegsel, achternaam from users where gebruikersnaam = ? ");
+
 ?>
 

@@ -10,9 +10,9 @@ function getQueryStringValue(key) {
 function setFocus() {
     var page = getQueryStringValue("page");
     if (page == "over-ons") {
-        $("ul > li.over-ons a").addClass('focus');
+        $("ul > li.over-ons").addClass('focus');
     }
     if (page == "productenoverzicht" || page == "product-detail" || page == "winkelwagen") {
-        $("ul > li.webshop > a").addClass('focus');
+        $("ul > li.webshop").addClass('focus');
     }
 }

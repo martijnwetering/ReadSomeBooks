@@ -1,4 +1,16 @@
-﻿body, div, p, a, h1, h2, h3, h4, h5, h6 {
+﻿@font-face {
+    font-family: FontAwesome;
+    src: url("../fonts/font_awsome/fontawesome-webfont.eot");
+    src: url("../fonts/font_awsome/fontawesome-webfont.eot?#iefix")
+            format("embedded-opentype"),
+            url("../fonts/font_awsome/fontawesome-webfont.woff"),
+            url("../fonts/font_awsome/fontawesome-webfont.ttf")
+                format("truetype"),
+            url("../fonts/font_awsome/fontawesome-webfont.svg")
+                format("svg");
+}
+
+body, div, p, a, h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
@@ -68,6 +80,7 @@ a {
     height: 150px;
     float: left;
     width: calc(100% - 400px);
+    margin-bottom: 2%;
 }
 
 #logo img {
@@ -111,7 +124,6 @@ input[type=submit]:hover {
 
 /* Navigatie
 =============================================================================*/
-
 #menu {
     margin: 0;
     clear: both;
@@ -121,6 +133,7 @@ ul.nav {
     list-style: none;
     position: relative;
     display: inline-table;
+    background-color: black;
     width: 100%;
     text-align: center;
     padding: 0;
@@ -142,7 +155,6 @@ ul.nav:after {
 
 ul.nav li {
     float: left;
-    background-color: #000000;
     color: white;
     position: relative;
     width: 20%;
@@ -152,7 +164,7 @@ ul.nav li {
 
 
 ul.nav li:hover {
-    background-color: dodgerblue;
+ background-color: dodgerblue;
 }
 
 ul.nav li ul {
@@ -254,35 +266,6 @@ ul.nav > li.focus {
     color: dodgerblue;
 }
 
-span.login-error {
-    display: block;
-    color: indianred;
-    font-size: 0.7em;
-    float: right;
-    padding-right: 4%;
-}
-
-div.user-welcome {
-    text-align: right;
-    font-size: 0.8em;
-    margin-top: 1%;
-}
-
-div.user-welcome span {
-    font-weight: bold;
-}
-
-div.user-welcome a {
-    float: right;
-    display: block;
-    margin-left: 2%;
-    text-decoration: none;
-}
-
-div.user-welcome a:hover {
-    color: dodgerblue;
-}
-
 /* end login */
 
 /* Over ons
@@ -297,7 +280,7 @@ div.user-welcome a:hover {
     margin: 3% 0;
 }
 
-.over-ons .over-ons img {
+.over-ons img {
     float: right;
     margin-left: 2%;
     width: 35%;
@@ -326,10 +309,6 @@ div.user-welcome a:hover {
 
 #content button.btn-terug {
     margin: 1% 0;
-}
-
-#detail-product h2 {
-    border: none;
 }
 
 #detail-product p {
@@ -662,13 +641,6 @@ form.registreer-form input[type=submit] {
     float: right;
     clear: both;
     margin-right: 1.5%;
-}
-
-.form-errors {
-    background-color: indianred;
-    color: white;
-    padding: 1%;
-    margin: 1% 0;
 }
 
 @media screen and (max-width: 1548px) {

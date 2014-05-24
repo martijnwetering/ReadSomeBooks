@@ -23,18 +23,21 @@ $registerUser = $db->prepare("insert into gebruiker (gebruikersnaam ,voornaam, t
     woonplaats, email, sexe, wachtwoord, telefoon) values (:gebruikersnaam ,:voornaam, :tussenvoegsel, :achternaam, :straatnaam, :huisnummer, :postcode,
     :woonplaats, :email, :sexe, :wachtwoord, :telefoon)");
 
-
-//Register user old db
-//$registerUserOld = $db->prepare("insert into users (voornaam, achternaam, wachtwoord, straatnaam, huisnummer, postcode,
-//    woonplaats, telefoon, aanhef, tussenvoegsel, gebruikersnaam, email, created) values (:voornaam, :achternaam, :wachtwoord, :straatnaam,
-//    :huisnummer, :postcode, :woonplaats, :telefoon, :aanhef, :tussenvoegsel, :gebruikersnaam, :email, now())");
-
 // Prepared statements to check for a username or email that is already in use
 $checkUsername = $db->prepare("select * from gebruiker where gebruikersnaam = ?");
 $checkEmail = $db->prepare("select * from gebruiker where email = ?");
 
 // Login
 $hashedPassword = $db->prepare("select wachtwoord from gebruiker where gebruikersnaam = ?");
+
+// Retrieve all books from the database
+$retrieveAllBooks = $db->prepare("select * from product");
+
+// Retrieve all books in a certain categorie
+$retrieveAllBooksInCategorie = $db->prepare("select * from product where categorie = ?");
+
+// Retrieve all categories
+$retrieveAllCategories = $db->prepare("select * from categorie");
 
 // Retrieve name user
 //$userFirstAndLastName = $db->prepare("select voornaam, tussenvoegsel, achternaam from users where gebruikersnaam = ? ");

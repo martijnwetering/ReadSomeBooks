@@ -1,5 +1,6 @@
 $(document).ready(function() {
     setFocus();
+    getAllBooksInCategorie();
 });
 
 function getQueryStringValue(key) {
@@ -15,4 +16,11 @@ function setFocus() {
     if (page == "productenoverzicht" || page == "product-detail" || page == "winkelwagen") {
         $("ul > li.webshop").addClass('focus');
     }
+}
+
+function getAllBooksInCategorie() {
+    $("#categorie").change(function() {
+        var url = window.location.origin + window.location.pathname;
+        window.location = url + "?page=productenoverzicht" + "&categorie=" + $("#categorie").val();
+    });
 }

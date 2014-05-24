@@ -24,6 +24,7 @@ if ($loginVerstuurd)
 
     if (password_verify($password, $hash['wachtwoord']))
     {
+        $_SESSION['login'] = true;
         $_SESSION['userName'] = $userName;
 
         header('Location: ' . $_SERVER['REQUEST_URI']);
@@ -74,7 +75,7 @@ if ($loginVerstuurd)
         echo '</span>';
     }
 
-    if (isset($_SESSION['userName']))
+    if (isset($_SESSION['login']))
     {
         echo "<div class='user-welcome'>";
         echo 'Welkom ' . '<span>' . $_SESSION['userName'] . '</span>';

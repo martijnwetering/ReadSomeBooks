@@ -60,7 +60,32 @@ if ($registratie_verstuurd)
         {
             if ($key !== 'registratie_verstuurd' && $key !== 'herhaal_wachtwoord')
             {
-                $registrationInfo[$key] = $value;
+                if ($key === 'aanhef')
+                {
+                    if ($value === 'dhr')
+                    {
+                        $registrationInfo['sexe'] = 'M';
+                    }
+                    if ($value === 'mevr')
+                    {
+                        $registrationInfo['sexe'] = 'V';
+                    }
+                }
+                else if ($key === 'tussenvoegsel')
+                {
+                    if (isNullOrWhiteSpace($value))
+                    {
+                        $registrationInfo['tussenvoegsel'] = null;
+                    }
+                    else
+                    {
+                        $registrationInfo['tussenvoegsel'] = $value;
+                    }
+                }
+                else
+                {
+                    $registrationInfo[$key] = $value;
+                }
             }
         }
 

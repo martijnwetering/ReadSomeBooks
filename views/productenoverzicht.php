@@ -7,7 +7,9 @@ if (empty($_SESSION['cart']))
 
 if (isset($_GET['item']))
 {
-    array_push($_SESSION['cart'], $_GET['item']);
+    $productId = $_GET['item'];
+    $_SESSION['cart'][$productId] = 1;
+
     if (isset($_GET['categorie']))
     {
         header("Location:" . $_SERVER['PHP_SELF'] . '?page=' . $_GET['page'] . '&categorie=' . $_GET['categorie']);
@@ -69,7 +71,7 @@ if (isset($_GET['item']))
             </a>
             <span class="po-prijs"><?php echo $row['PRIJS']; ?></span>
             <button id="addToShoppingCart">
-                <a href="<?php echo $_SERVER['REQUEST_URI'] . '&item=' . $row['TITEL']; ?>"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                <a href="<?php echo $_SERVER['REQUEST_URI'] . '&item=' . $row['PRODUCTNUMMER']; ?>"><i class="fa fa-shopping-cart fa-2x"></i></a>
             </button>
             <div class="clearfix"></div>
         </div>
@@ -92,7 +94,7 @@ if (isset($_GET['item']))
             </a>
             <span class="po-prijs"><?php echo $row['PRIJS']; ?></span>
             <button id="addToShoppingCart">
-                <a href="<?php echo $_SERVER['REQUEST_URI'] . '&item=' . $row['TITEL']; ?>"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                <a href="<?php echo $_SERVER['REQUEST_URI'] . '&item=' . $row['PRODUCTNUMMER']; ?>"><i class="fa fa-shopping-cart fa-2x"></i></a>
             </button>
             <div class="clearfix"></div>
         </div>

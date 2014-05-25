@@ -1,6 +1,9 @@
 $(document).ready(function() {
     setFocus();
     getAllBooksInCategorie();
+    updateQuantity();
+    recalculateTotal();
+    continuShopping();
 });
 
 function getQueryStringValue(key) {
@@ -22,5 +25,37 @@ function getAllBooksInCategorie() {
     $("#categorie").change(function() {
         var url = window.location.origin + window.location.pathname;
         window.location = url + "?page=productenoverzicht" + "&categorie=" + $("#categorie").val();
+    });
+}
+
+function updateQuantity() {
+    $(".aantal").on("change", function() {
+        var url = window.location.href;
+        var productId = $(this).val();
+        var quantity = $(this).find("option:selected").text();
+
+        var obj = {
+            productId: productId,
+            quantity: quantity
+        };
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: obj
+        });
+    });
+}
+
+function recalculateTotal() {
+    $(".herbereken").click(function() {
+        location.reload();
+    });
+}
+
+function continuShopping() {
+    $(".verder-winkelen").click(function() {
+        var url = window.location.origin + window.location.pathname;
+        window.location = url + "?page=productenoverzicht";
     });
 }

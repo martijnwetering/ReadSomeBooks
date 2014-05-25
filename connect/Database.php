@@ -36,8 +36,12 @@ $retrieveAllBooks = $db->prepare("select * from product");
 // Retrieve all books in a certain categorie
 $retrieveAllBooksInCategorie = $db->prepare("select * from product where categorie = ?");
 
+// Retrieve book by product number
+$retrieveBookByProductNumber = $db->prepare("select * from product where productnummer = ?");
+
 // Retrieve all categories
 $retrieveAllCategories = $db->prepare("select * from categorie");
+
 
 // Retrieve name user
 //$userFirstAndLastName = $db->prepare("select voornaam, tussenvoegsel, achternaam from users where gebruikersnaam = ? ");

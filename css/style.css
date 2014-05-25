@@ -605,6 +605,10 @@ button.afrekenen {
     background-color: forestgreen;
 }
 
+.remove-item {
+    text-decoration: none;
+}
+
 /* End Winkelwagen */
 
 /* Registreren

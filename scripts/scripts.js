@@ -24,7 +24,15 @@ function setFocus() {
 function getAllBooksInCategorie() {
     $("#categorie").change(function() {
         var url = window.location.origin + window.location.pathname;
-        window.location = url + "?page=productenoverzicht" + "&categorie=" + $("#categorie").val();
+        var value = $(this).val();
+        if (value == "alle-producten")
+        {
+            window.location = url + "?page=productenoverzicht";
+        }
+        else
+        {
+            window.location = url + "?page=productenoverzicht" + "&categorie=" + value;
+        }
     });
 }
 

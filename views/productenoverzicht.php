@@ -31,6 +31,7 @@ if (isset($_GET['item']))
 </form>
 <select id="categorie">
     <option value="">selecteer een categorie...</option>
+    <option value="alle-producten">Alle producten</option>
     <?php
     $retrieveAllCategories->execute();
     while ($row = $retrieveAllCategories->fetch())

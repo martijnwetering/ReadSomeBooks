@@ -9,8 +9,12 @@
             <ul>
                 <li><a href="<?php echo $_SERVER['PHP_SELF'] . '?page=productenoverzicht' ?>">Producten</a></li>
                 <li><a href="<?php echo $_SERVER['PHP_SELF'] . '?page=winkelwagen' ?>">Winkelwagen</a></li>
-                <li><a href="#">Afrekenen</a></li>
+                <li><a href="<?php echo $_SERVER['PHP_SELF'] . '?page=afrekenen' ?>">Afrekenen</a></li>
             </ul>
         </li>
     </ul>
+</div>
+<div id="error">
+    <span id="error-message"></span>
+    <span id="afsluiten"><i class="fa fa-times"></i></span>
 </div>

@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 
 
 <div id="content" class="winkelwagen">
-    <button class="verder-winkelen">Verder winkelen</button>
+    <button class="terug-productenoverzicht">Verder winkelen</button>
     <h1>Winkelwagen</h1>
 
     <table class="tabel-1">
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 $totalPrice += $product['PRIJS'] * $quantity;
         ?>
                 <tr>
-                    <td><img src="<?php echo $product['AFBEELDING_KLEIN']; ?>" alt="product"/></td>
+                    <td><a href="<?php echo $_SERVER['PHP_SELF'] . '?page=product-detail&productId=' . $productNumber ?>"><img src="<?php echo $product['AFBEELDING_KLEIN']; ?>" alt="product"/></a></td>
                     <td><?php echo $product['TITEL']; ?></td>
                     <td>&euro; <?php echo $product['PRIJS']; ?></td>
                     <td>

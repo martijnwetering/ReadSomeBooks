@@ -1,5 +1,5 @@
 <?php
-require('../scripts/helperFunctions.php');
+require('../app/helperFunctions.php');
 require('../connect/Database.php');
 
 session_start();
@@ -19,8 +19,6 @@ if ($loginVerstuurd)
     $userName = trim($_POST['gebruikersnaam']);
     $hashedPassword->execute(array($userName));
     $hash = $hashedPassword->fetch();
-
-    $verified = password_verify($password, $hash['wachtwoord']);
 
     if (password_verify($password, $hash['wachtwoord']))
     {

@@ -42,9 +42,15 @@ $retrieveBookByProductNumber = $db->prepare("select * from product where product
 // Retrieve all categories
 $retrieveAllCategories = $db->prepare("select * from categorie");
 
+// Related products
+$getAllRelatedProductIds = $db->prepare("select * from product_gerelateerd_product where productnummer = ?");
 
-// Retrieve name user
-//$userFirstAndLastName = $db->prepare("select voornaam, tussenvoegsel, achternaam from users where gebruikersnaam = ? ");
+// Retrieve amount in stock
+$retrieveAmountInStock = $db->prepare("select voorraad from product where productnummer = ?");
+
+// Update stock
+$updateStock = $db->prepare("update product set voorraad = voorraad - :quantity where PRODUCTNUMMER = :productId");
+
 
 ?>
 

@@ -1,28 +1,4 @@
-﻿<?php
-
-if (empty($_SESSION['cart']))
-{
-    $_SESSION['cart'] = array();
-}
-
-if (isset($_GET['item']))
-{
-    $productId = $_GET['item'];
-    $_SESSION['cart'][$productId] = 1;
-
-    if (isset($_GET['categorie']))
-    {
-        header("Location:" . $_SERVER['PHP_SELF'] . '?page=' . $_GET['page'] . '&categorie=' . $_GET['categorie']);
-        exit();
-    }
-    else
-    {
-        header("Location:" . $_SERVER['PHP_SELF'] . '?page=' . $_GET['page']);
-        exit();
-    }
-}
-?>
-
+﻿
 <div id="content" class="productenoverzicht">
 <div class="po-kolom">
 <form>
@@ -61,9 +37,11 @@ if (isset($_GET['item']))
         $retrieveAllBooks->execute();
         while ($row = $retrieveAllBooks->fetch())
         {
+            // Ckecks if an item is already in the shopping cart
+            $inShoppingCart = isset($_SESSION['cart'][$row['PRODUCTNUMMER']]);
         ?>
         <div class="product-klein">
-            <a href="<?php echo $_SERVER['PHP_SELF'] . '?page=product-detail' ?>">
+            <a href="<?php echo $_SERVER['PHP_SELF'] . '?page=product-detail&productId=' . $row['PRODUCTNUMMER']; ?>">
                 <img src="<?php echo $row['AFBEELDING_KLEIN']; ?>" alt="" />
                 <div class="product-info">
                     <span class="po-naam"><?php echo $row['TITEL']; ?></span>
@@ -71,9 +49,10 @@ if (isset($_GET['item']))
                 </div>
             </a>
             <span class="po-prijs"><?php echo $row['PRIJS']; ?></span>
-            <button id="addToShoppingCart">
-                <a href="<?php echo $_SERVER['REQUEST_URI'] . '&item=' . $row['PRODUCTNUMMER']; ?>"><i class="fa fa-shopping-cart fa-2x"></i></a>
+            <button class="addToShoppingCart <?php if ($inShoppingCart) {echo 'in-winkelwagen';} ?>">
+                <i class="fa fa-shopping-cart fa-2x"></i>
             </button>
+            <input type="hidden" value="<?php echo $row['PRODUCTNUMMER']; ?>" />
             <div class="clearfix"></div>
         </div>
     <?php

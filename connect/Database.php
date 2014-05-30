@@ -17,8 +17,6 @@ catch(PDOException $e)
 // Prepared statemants
 
 // Register user
-// gebruikersnaam, voornaam, tussenvoegsel, achteraam, straatnaam, huisnummer, postcode, woonplaats, email, sexe, wachtwoord
-
 $registerUser = $db->prepare("insert into gebruiker (gebruikersnaam ,voornaam, tussenvoegsel, achternaam, straatnaam, huisnummer, postcode,
     woonplaats, email, sexe, wachtwoord, telefoon) values (:gebruikersnaam ,:voornaam, :tussenvoegsel, :achternaam, :straatnaam, :huisnummer, :postcode,
     :woonplaats, :email, :sexe, :wachtwoord, :telefoon)");
@@ -51,6 +49,9 @@ $retrieveAmountInStock = $db->prepare("select voorraad from product where produc
 // Update stock
 $updateStock = $db->prepare("update product set voorraad = voorraad - :quantity where PRODUCTNUMMER = :productId");
 
+// Search for titel or writer in database
+$searchBookOnTitelOrWriter = $db->prepare("select * from product where titel like :searchstring or schrijver like :searchstring");
+$searchBookOnWriter = $db->prepare("select & from product where schrijver like :writer");
 
 ?>
 

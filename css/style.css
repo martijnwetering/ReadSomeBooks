@@ -466,7 +466,7 @@ label.bestelling {
 /* Productenoverzicht
 =============================================================================*/
 
-.po-kolom form {
+.po-kolom .search {
     display: block;
     margin: 3% auto;
     width: 273px;

@@ -14,8 +14,8 @@ if (isset($_GET['productId']))
     $amountInStock = $retrieveAmountInStock->fetch();
     $inStock = ($amountInStock['voorraad'] != null && $amountInStock['voorraad'] > 0);
 }
-?>
 
+?>
 
 <div id="content">
 

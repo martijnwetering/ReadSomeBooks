@@ -11,6 +11,7 @@ $(document).ready(function() {
     cancelConfirmPayment();
     confirmPayment();
     goToConfirmPayment();
+    searchBook()
 });
 
 // Returns the querystring value for the given key.
@@ -185,10 +186,7 @@ function confirmPayment() {
             .error(function(e) {
                 console.log(e);
             });
-
-
     });
-
 }
 
 function cancelConfirmPayment() {
@@ -198,3 +196,11 @@ function cancelConfirmPayment() {
     });
 }
 
+function searchBook() {
+    $("#submitSearch").click(function() {
+        var searchString = $("#searchString").val();
+        var url = window.location.origin + window.location.pathname
+            + "?page=productenoverzicht&search=" + searchString;
+        window.location = url;
+    });
+}

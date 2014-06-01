@@ -10,12 +10,14 @@
         <tbody>
         <?php
 
+        // Checks if the user is logged in.
         if (isset($_SESSION['login']))
         {
             if (!empty($_SESSION['cart']))
             {
                 $totalPrice = 0;
 
+                // Displays all items the user wants to buy.
                 foreach ($_SESSION['cart'] as $productNumber => $quantity)
                 {
                     $retrieveBookByProductNumber->execute(array($productNumber));

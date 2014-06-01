@@ -9,12 +9,16 @@ $registrationInfo = array();
 
 if ($registratie_verstuurd)
 {
+    /*#######################################
+    * Guard clauses register form
+    *#######################################*/
+
+    // Checks if all required fields were filled in.
     if (!filledInForm($_POST))
     {
         $errors[] = 'Alle velden met een * zijn verplicht';
     }
     else {
-        // Removes all leading and trailing whitespace
         foreach ($_POST as $key => $value)
         {
             $value = trim($value);
@@ -89,7 +93,7 @@ if ($registratie_verstuurd)
             }
         }
 
-        // Sends the data to the database by making use of a prepared statement
+        // Saves the user to the database.
         try
         {
             $registerUser->execute($registrationInfo);

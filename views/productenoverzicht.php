@@ -56,11 +56,12 @@ if (isset($_GET['recordLimit']))
         </select>
 <span>
     <?php
+    // Checks howmany items in the database there are and displays this to the user.
     $retrieveAllBooksWihtoutLimit->execute();
     $booksInDatabase = $retrieveAllBooksWihtoutLimit->rowCount();
     echo "{$booksInDatabase} producten | ";
 
-    // Builds the dropdownlist were the user can select howmany books should be displayed
+    // Builds the dropdownlist were the user can select howmany items should be displayed
     // for each page.
     echo '<select id="numberOfItemsPerPage">';
     for ($i = 4; $i < 17; $i+=4)
@@ -74,17 +75,14 @@ if (isset($_GET['recordLimit']))
 </span>
         <div class="product-row">
             <?php
+            // Sets the page number and offset for the pagination.
             if (isset($_GET['pageNumber']))
             {
                 $pageNumber = $_GET['pageNumber'];
                 $offset = $_SESSION['recordLimit'] * ($pageNumber - 1);
             }
-            else
-            {
-                $pageNumber = 1;
-                $offset = 0;
-            }
 
+            // Handles search request. Can find a book on writer or titel.
             if (isset($_GET['search']))
             {
                 $searchString = $_GET['search'];
@@ -119,6 +117,7 @@ if (isset($_GET['recordLimit']))
                 $retrieveAllBooksInCategorie->execute();
                 renderBooks($retrieveAllBooksInCategorie);
             }
+            // Renders all books in the database.
             else
             {
                 $retrieveAllBooksWihtoutLimit->execute();
@@ -136,6 +135,7 @@ if (isset($_GET['recordLimit']))
     <div class="pagination">
 
         <?php
+        // Sets the links for the pagination.
         if (!isset($_GET['search']))
         {
             $baseUrl = $_SERVER['PHP_SELF'] . "?page=productenoverzicht" . "&recordLimit="
@@ -152,7 +152,7 @@ if (isset($_GET['recordLimit']))
             }
 
 
-            // Rendering pagination control.
+            // Renders previous and next buttons for pagination.
             $pageNumber = $_GET['pageNumber'];
             $recordLimit = $_SESSION['recordLimit'];
             $booksLeft = $totalBooks - ($pageNumber * $recordLimit);

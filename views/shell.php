@@ -39,7 +39,6 @@
             header('Location: shell.php?page=over-ons');
             exit();
         }
-
         ?>
 
         <footer>

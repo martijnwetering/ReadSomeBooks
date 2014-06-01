@@ -55,6 +55,7 @@ if (isset($_GET['productId']))
     <div class="row product-panel">
 
         <?php
+        // Renders related books.
         while ($relatedProduct = $getAllRelatedProductIds->fetch())
         {
             $retrieveBookByProductNumber->execute(array($relatedProduct['PRODUCTNUMMER_GERELATEERD_PRODUCT']));

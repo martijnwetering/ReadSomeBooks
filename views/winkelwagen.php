@@ -1,4 +1,5 @@
 <?php
+// Removes a product from the cart array on $_SESSION.
 if (isset($_GET['remove']))
 {
     $productNumber = $_GET['remove'];
@@ -8,6 +9,7 @@ if (isset($_GET['remove']))
     exit();
 }
 
+// Sets the item on the cart array in $_SESSION.
 if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {
     if (isset($_POST['productId']) && isset($_POST['quantity']))
@@ -42,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             $totalPrice = 0;
 
+            // Renders all the books in the cart array in $_SESSION.
             foreach ($_SESSION['cart'] as $productNumber => $quantity)
             {
                 $retrieveBookByProductNumber->execute(array($productNumber));

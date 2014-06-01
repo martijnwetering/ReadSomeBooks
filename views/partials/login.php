@@ -17,9 +17,13 @@ if ($loginVerstuurd)
 {
     $password = trim($_POST['wachtwoord']);
     $userName = trim($_POST['gebruikersnaam']);
+
+    // Fetches the hashed password from the database.
     $hashedPassword->execute(array($userName));
     $hash = $hashedPassword->fetch();
 
+    // Checks if the hashed password is equal to the posted password. If the password
+    // doensn't match it sets an error on $loginError.
     if (password_verify($password, $hash['wachtwoord']))
     {
         $_SESSION['login'] = true;
@@ -66,6 +70,8 @@ if ($loginVerstuurd)
     <?php
     }
 
+    // Checks if there is an error set on $loginError, and if so it will display
+    // this to the user.
     if (isset($loginError))
     {
         echo "<span class='login-error'>";
@@ -73,6 +79,8 @@ if ($loginVerstuurd)
         echo '</span>';
     }
 
+    // If the user is logd in his username will be displayed along with the ability
+    // to log out.
     if (isset($_SESSION['login']))
     {
         echo "<div class='user-welcome'>";

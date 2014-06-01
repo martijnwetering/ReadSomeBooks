@@ -69,11 +69,12 @@ function checkPasswordStrength($password)
     }
 }
 
-// Receives an pdo [$result] and renders the books.
+// Receives an pdo [$result] and renders the items.
 function renderBooks($pdoObject)
 {
     while ($row = $pdoObject->fetch())
     {
+        // Checks if the item is already in the shopping cart.
         $inShoppingCart = isset($_SESSION['cart'][$row['PRODUCTNUMMER']]);
         ?>
         <div class="product-klein">

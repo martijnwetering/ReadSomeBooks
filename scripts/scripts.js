@@ -13,8 +13,6 @@ $(document).ready(function() {
     goToConfirmPayment();
     searchBook();
     setItemsPerPage();
-    nextPage();
-    previousPage();
 });
 
 // Returns the querystring value for the given key.
@@ -71,12 +69,14 @@ function updateQuantity() {
     });
 }
 
+// Refreshes the pages so the correct total price is displayed again.
 function recalculateTotal() {
     $(".herbereken").click(function() {
         location.reload();
     });
 }
 
+// Redirects the user to the product overview page.
 function continuShopping() {
     $(".terug-productenoverzicht").click(function() {
         var url = window.location.origin + window.location.pathname;
@@ -84,6 +84,8 @@ function continuShopping() {
     });
 }
 
+// Sends a post request to the server with the item to add to the
+// shopping cart. On success it will make the cart button green.
 function addToShoppingCart() {
     $(".addToShoppingCart").on("click", function() {
         var that = $(this);
@@ -114,6 +116,8 @@ function addToShoppingCart() {
     });
 }
 
+// Sends a post request to the server containing the item to add
+// and the quantity. On success it will make the cart button green.
 function addItemAndQuantityToShoppingCart() {
     $("#bestelHoofdItem").click(function() {
         var that = $(this);
@@ -147,12 +151,14 @@ function addItemAndQuantityToShoppingCart() {
     });
 }
 
+// Closes the error message.
 function closeErrorMessage() {
     $("#afsluiten").click(function() {
         $("#error").css("display", "none");
     });
 }
 
+// Redirects to the payment page.
 function goToPayment() {
     $(".afrekenen").click(function() {
         window.location = window.location.origin +
@@ -160,6 +166,7 @@ function goToPayment() {
     });
 }
 
+// Gives the user a window where he can confirm his purchase.
 function goToConfirmPayment() {
     $(".betaal").click(function() {
         $("#overlay").css("display", "block");
@@ -167,6 +174,9 @@ function goToConfirmPayment() {
     });
 }
 
+// Sends a get request to the server indicating the user wants to buy
+// the items in his shopping cart. If everything is prossesed correctly
+// on the server the user will be notified his purchase was succesfull.
 function confirmPayment() {
     $("#bevestig").click(function() {
         $.ajax({
@@ -192,6 +202,7 @@ function confirmPayment() {
     });
 }
 
+// Closes the window were the user can confirm his payment.
 function cancelConfirmPayment() {
     $("#annuleer").click(function() {
         $("#overlay").css("display", "none");
@@ -199,6 +210,8 @@ function cancelConfirmPayment() {
     });
 }
 
+// Sends a request to the server to search for a book based on the provided
+// data in the quesrystring.
 function searchBook() {
     $("#submitSearch").click(function() {
         var searchString = $("#searchString").val();
@@ -208,6 +221,8 @@ function searchBook() {
     });
 }
 
+// Sends to the server the number of items the user wants displayed on the
+// product overview page.
 function setItemsPerPage() {
     $("#numberOfItemsPerPage").change(function() {
         var recordLimit = $("#numberOfItemsPerPage").val();

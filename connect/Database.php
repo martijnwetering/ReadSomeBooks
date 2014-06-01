@@ -9,6 +9,7 @@ $config = array(
 try
 {
     $db = new PDO($config['dsn'], $config['gebruikersnaam'], $config['wachtwoord']);
+    $db->setAttribute( PDO::ATTR_EMULATE_PREPARES, false );
 }
 catch(PDOException $e)
 {
@@ -29,10 +30,12 @@ $checkEmail = $db->prepare("select * from gebruiker where email = ?");
 $hashedPassword = $db->prepare("select wachtwoord from gebruiker where gebruikersnaam = ?");
 
 // Retrieve all books from the database
-$retrieveAllBooks = $db->prepare("select * from product");
+$retrieveAllBooksWihtoutLimit = $db->prepare("select * from product");
+$retrieveAllBooks = $db->prepare("select * from product LIMIT :offset, :recordLimit");
 
 // Retrieve all books in a certain categorie
-$retrieveAllBooksInCategorie = $db->prepare("select * from product where categorie = ?");
+$retrieveAllBooksInCategorieWithoutLimit = $db->prepare("select * from product where categorie = :categorie");
+$retrieveAllBooksInCategorie = $db->prepare("select * from product where categorie = :categorie LIMIT :offset, :recordLimit");
 
 // Retrieve book by product number
 $retrieveBookByProductNumber = $db->prepare("select * from product where productnummer = ?");
@@ -50,8 +53,9 @@ $retrieveAmountInStock = $db->prepare("select voorraad from product where produc
 $updateStock = $db->prepare("update product set voorraad = voorraad - :quantity where PRODUCTNUMMER = :productId");
 
 // Search for titel or writer in database
-$searchBookOnTitelOrWriter = $db->prepare("select * from product where titel like :searchstring or schrijver like :searchstring");
-$searchBookOnWriter = $db->prepare("select & from product where schrijver like :writer");
+$searchBookOnTitelOrWriter = $db->prepare("select * from product where titel like :titel or schrijver like :writer");
+
+$selectBook = $db->prepare("select * from product where schrijver like :someValue");
 
 ?>
 

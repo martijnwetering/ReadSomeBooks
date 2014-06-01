@@ -540,6 +540,14 @@ label.bestelling {
     background-color: #008000;
 }
 
+.previous {
+    float: left;
+}
+
+.next {
+    float: right;
+}
+
 /* End Productenoverzicht */
 
 /* Winkelwagen

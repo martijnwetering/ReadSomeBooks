@@ -11,7 +11,10 @@ $(document).ready(function() {
     cancelConfirmPayment();
     confirmPayment();
     goToConfirmPayment();
-    searchBook()
+    searchBook();
+    setItemsPerPage();
+    nextPage();
+    previousPage();
 });
 
 // Returns the querystring value for the given key.
@@ -39,11 +42,11 @@ function getAllBooksInCategorie() {
         var value = $(this).val();
         if (value == "alle-producten")
         {
-            window.location = url + "?page=productenoverzicht";
+            window.location = url + "?page=productenoverzicht&pageNumber=1";
         }
         else
         {
-            window.location = url + "?page=productenoverzicht" + "&categorie=" + value;
+            window.location = url + "?page=productenoverzicht&pageNumber=1" + "&categorie=" + value;
         }
     });
 }
@@ -203,4 +206,14 @@ function searchBook() {
             + "?page=productenoverzicht&search=" + searchString;
         window.location = url;
     });
+}
+
+function setItemsPerPage() {
+    $("#numberOfItemsPerPage").change(function() {
+        var recordLimit = $("#numberOfItemsPerPage").val();
+        var url = window.location.origin + window.location.pathname
+            + "?page=productenoverzicht"+ "&recordLimit=" + recordLimit;
+        window.location = url;
+    });
+
 }

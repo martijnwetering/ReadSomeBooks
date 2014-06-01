@@ -1,15 +1,18 @@
 ﻿<?php
 if (isset($_GET['productId']))
 {
+    // Retrieves the book the user wants to see the details about.
     $productId = $_GET['productId'];
     $retrieveBookByProductNumber->execute(array($productId));
     $book = $retrieveBookByProductNumber->fetch();
 
+    // Retrievs the product id's of all the related books.
     $getAllRelatedProductIds->execute(array($productId));
 
+    // Checks to see if the book is in the shopping cart already.
     $inShoppingCart = isset($_SESSION['cart'][$book['PRODUCTNUMMER']]);
 
-    // Check to see if a book is on stock
+    // Check to see if the book is on stock.
     $retrieveAmountInStock->execute(array($book['PRODUCTNUMMER']));
     $amountInStock = $retrieveAmountInStock->fetch();
     $inStock = ($amountInStock['voorraad'] != null && $amountInStock['voorraad'] > 0);

@@ -1,4 +1,7 @@
 <?php
+// Checks if an username is already in use when a user registers. Function receives
+// the username to check and a PDO prepared statement to check the username with against
+// the database.
 function duplicateUsername($username, $checkUsername)
 {
     $checkUsername->execute(array($username));
@@ -13,6 +16,9 @@ function duplicateUsername($username, $checkUsername)
     }
 }
 
+// Checks if an email is already in use when a user registers. Function receives
+// the email to check and a PDO prepared statement to check the email with against
+// the database.
 function duplicateEmail($email, $checkEmail)
 {
     $checkEmail->execute(array($email));
@@ -27,7 +33,7 @@ function duplicateEmail($email, $checkEmail)
     }
 }
 
-// Checks if all required field in the registration form were filled in
+// Checks if all required fields in the registration form were filled in.
 function filledInForm($post)
 {
     foreach($post as $key => $value)
@@ -43,13 +49,13 @@ function filledInForm($post)
     }
 }
 
-// Checks if a variable contains null or whiteSpace
+// Checks if a variable contains null or whiteSpace.
 function isNullOrWhiteSpace($value)
 {
     return (!isset($value) || trim($value) === '');
 }
 
-// Checks if the strength of the password is sufficient
+// Checks if the strength of the password is sufficient.
 function checkPasswordStrength($password)
 {
     if( strlen($password) < 6 || strlen($password) > 20 || !preg_match("#[0-9]+#", $password)
@@ -64,9 +70,9 @@ function checkPasswordStrength($password)
 }
 
 // Receives an pdo [$result] and renders the books.
-function renderBooks($result)
+function renderBooks($pdoObject)
 {
-    while ($row = $result->fetch())
+    while ($row = $pdoObject->fetch())
     {
         $inShoppingCart = isset($_SESSION['cart'][$row['PRODUCTNUMMER']]);
         ?>
